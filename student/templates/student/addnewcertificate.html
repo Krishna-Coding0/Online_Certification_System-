@@ -1,0 +1,110 @@
+{% include 'student/navbar.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    
+    <div class="container bg-white">
+        <div class="container">
+            <h3 class="text-black text-center display-6">Add New Certificate</h3>
+            <hr class="w-50 m-auto bg-danger mb-5">
+        </div>
+        <div class="container text-center">
+            {% if messages %}
+                {% for message in messages %}
+                    <p {% if message.tags %} class="alert alert-{{message.tags}} mb-5 {% endif %}"> {{message}}</p>
+                {% endfor %}
+            {% endif %} 
+            
+        </div>
+
+
+        <div class="row">
+            <div class="col-4">
+                <img src="{% static 'student/img/certificate side.jpg' %}" class="img-fluid rounded-pill my-5"alt="">
+            </div>
+
+
+            <div class="col-8">
+                <div class="container d-grid">
+                    <form action="" method="post" novalidate>
+                        {% csrf_token %}
+                        <div class="form-row my-4">
+                            <div class="form-row d-flex flex-nowrap">
+                                <div class="form-group col-6 me-1 mb-2">
+                                    <label class="ps-1">Certificate Name:</label>{{form.certificate_name}}
+                                    <small class="text-warning"> {{form.errors|striptags}} </small>
+                                </div>
+
+                                <div class="form-group col-6">
+                                    <label>Name:</label>{{form.std_Fname}}
+                                    <small class="text-warning"> {{form.errors|striptags}} </small>
+                                </div>
+                            </div>
+                            <div class="form-row d-flex flex-nowrap">
+                                <div class="form-group col-6 me-1 mb-2">
+                                    <label class="ps-1">Surname:</label>{{form.std_Lname}}
+                                    <small class="text-warning"> {{form.errors|striptags}} </small>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>Department:</label>{{form.std_department}}
+                                    <small class="text-warning"> {{form.errors|striptags}} </small>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row d-flex flex-nowrap">
+                                <div class="form-group col-6 me-1 mb-2">
+                                    <label class="ps-1">Branch of:</label>{{form.branch_of}}
+                                    <small class="text-warning"> {{form.errors|striptags}} </small>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>Rank:</label>{{form.rank}}
+                                    <small class="text-warning"> {{form.errors|striptags}} </small>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row d-flex flex-nowrap">
+                                <div class="form-group col-6 me-1 mb-2">
+                                    <label class="ps-1">Marks:</label>{{form.marks}}
+                                    <small class="text-warning"> {{form.errors|striptags}} </small>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>Roll No:</label>{{form.std_roll}}
+                                    <small class="text-warning"> {{form.errors|striptags}} </small>
+                                </div>
+                            </div>
+                            <div class="form-row d-flex flex-nowrap">
+                                <div class="form-group col-6 me-1 mb-2">
+                                    <label class="ps-1">Date:</label>{{form.date}}
+                                    <small class="text-warning"> {{form.errors|striptags}} </small>
+                                </div>
+                                <input type="submit" class="btn btn-danger btn-sm col-6 h-25 mt-4" value="Add Certificate">
+                                
+                            </div>
+            
+                            
+                            {% if form.non_field_errors %}   
+                                {% for error in form.non_field_errors %}
+                                    <p class="alert alert-danger my-3">{{error}}</p>
+                                {% endfor %}
+                            {% endif %}
+                            
+                        </div>
+                    </form>
+                    
+                </div>
+
+            </div> 
+        </div>   
+    </div>
+
+</body>
+</html>

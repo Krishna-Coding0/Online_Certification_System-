@@ -1,0 +1,57 @@
+{% include 'student/navbar.html' %}
+{% load static %}
+
+
+{% block content %}
+ this is admin list page
+<br>
+{% for f in form %}
+    {{f}}
+{% endfor %}
+
+
+{% comment %} {% if form %}
+<table class="table table-hover bg-white">
+    <thread>
+        <tr class="text-center">
+            <th scope="col" style="width:8%">First Name</th>
+            <th scope="col" style="width:8%">Last Name</th>
+            <th scope="col" style="width:8%">Department</th>
+            <th scope="col" style="width:10%">Branch(Year)</th>
+            <th scope="col" style="width:10%">Rank</th>
+            <th scope="col" style="width:10%">Marks</th>
+            <th scope="col" style="width:10%">Roll No</th>
+            <th scope="col" style="width:10%">Address</th>
+            <th scope="col" style="width:10%">phone_no</th>
+        </tr>
+    </thread>
+    <tbody>
+        {% for sh in show%}
+            <tr>
+                <th>{{sh.certificate_name}}</th>
+                <td>{{sh.std_Fname}}</td>
+                <td>{{sh.std_Lname}}</td>
+                <td>{{sh.std_department}}</td>
+                <td>{{sh.branch_of}}</td>
+                <td>{{sh.rank}}</td>
+                <td>{{sh.marks}}</td>
+                <td>{{sh.std_roll}}</td>
+                <td>{{sh.date}}</td>
+                <td class="text-center">
+                    <a href="{% url 'certificate'%}" class="btn btn-warning btn-sm">SHow Certificate</a>
+                    <a href="{% url 'certificate'%}" class="btn btn-warning btn-sm">Update</a>
+                    <a href="{% url 'certificate'%}" class="btn btn-warning btn-sm">Delete</a>
+
+                </td>
+            </tr>
+         {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<h4 class="text-center alert alert-warning">No record </h4>
+{% endif %} {% endcomment %}
+
+{% endblock content %}
+
+
+

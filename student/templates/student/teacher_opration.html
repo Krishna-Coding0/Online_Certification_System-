@@ -1,0 +1,22 @@
+{% include 'student/navbar.html' %}
+{% load static %}
+
+{% block content %}
+
+This Is Teacher Options
+
+
+{% if a == 'teacher' %}
+
+<div class="container bg-primary w-100">
+
+    {{form.as_p}}
+
+</div>
+
+{% endif %}
+
+
+
+
+{% endblock content %}

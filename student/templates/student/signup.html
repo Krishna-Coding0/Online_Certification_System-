@@ -1,0 +1,81 @@
+{% include 'student/navbar.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{% static 'student/css/style.css' %}">
+
+    <title>Signup</title>
+</head>
+<body>
+    <div class="container bg-white">
+        <div class="container">
+            {% if a %}
+                <div class="container">
+                    <h5 class="text-black text-center display-6 ">Sign up</h5>
+                    <hr class="w-25 m-auto bg-danger mb-2">
+                </div>
+            {% else %}
+                <div class="container">
+                    <h5 class="text-black text-center display-6 ">Add Faculty</h5>
+                    <hr class="w-25 m-auto bg-danger mb-2">
+                </div>
+            {% endif %}
+            <div class="container">
+                {% if messages %}
+                    {% for message in messages %}
+                        <p {% if message.tags %} class="alert alert-{{message.tags}} mb-5  {% endif %}"> {{message}}</p>
+                    {% endfor %}
+            {% endif %}
+            </div>
+
+
+            <div class="row mt-0">
+                <div class="col-7 text-center">
+                    <img src="{% static 'student/img/signup.png' %}" class="ms-5 mt-1 text-center" alt="" width="300px" height="480px"></a>
+                </div>
+                <div class="col-4">
+
+                    <div class="container border border-secondary">
+                        {% if a %}
+                            <div class="container ">
+                                <a class="ms-auto float-end mt-1 btn btn-outline-secondary" href="/pre_loginvalidate/">Login</a>
+                            </div>
+                        {% endif %}
+                        <div class="clearfix"></div>
+
+                        <form action="" method="post" novalidate>
+                            {% csrf_token %}
+                            <div class="container mb-1">
+                                {% for fm in form %}
+                                    {{fm.label_tag}}{{fm}}
+                                    <small class="text-danger"> {{fm.errors|striptags}}</small>
+                                {% endfor %}
+                                <button type="submit" class="my-2 d-flex text-center btn btn-outline-dark">Register</button>
+                                {% if form.non_field_errors %}
+                                    {% for error in form.non_field_errors %}
+                                        <p class="alert alert-danger my-3">{{error}}</p>
+                                     {% endfor %}
+                                {% endif %} 
+                            </div>
+                        </form>
+
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+        
+    </div>
+
+</body>
+</html>

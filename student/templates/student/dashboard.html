@@ -1,0 +1,133 @@
+{% include 'student/navbar.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'student/css/style.css' %}">
+</head>
+<body>
+
+
+<div class="container">
+
+    {% comment %} start of 1st row {% endcomment %}
+    <div class="row d-flex flex-nowrap ">
+
+        {% comment %} 1st Colum Code start {% endcomment %}
+        <div class="col-2 bg-white me-1 pt-2">
+            <h2 class="text-center">Profile</h2>
+            <hr class="w-70 bg-black align-baseline">
+            <div class="container text-center pb-4">
+                <img src="{{image.admin_profile.url}}" alt="" height=200px class="rounded-circle" >
+            </div>
+                <h2 class="text-capitalize text-center"> Admin</h2>
+                <section class="text-capitalize text-center">{{profile.first_name}} {{profile.last_name}}</section>
+                <section class="text-center">{{profile.email}}</section>
+                 <br>
+               
+           
+        </div>
+        {% comment %} End of 1st Column Code {% endcomment %}
+
+        {% comment %} 2nd column Code Start {% endcomment %}
+        <div class="col-6 bg-white me-1 pt-2">
+            <h2 class="text-center">
+            <div class="container">
+                <h2 class="text-center">Dashboard</h2>
+                <hr class="w-70 bg-black align-baseline">
+
+            </div>
+            <div class="container">
+            
+                <div class="container-fluid d-flex justify-content-around">
+                    <div class="container">
+                        <a href="{% url 'add_falucty' %}" class="btn btn-warning btn-sm">Add Faculty</a>
+                    </div>
+                    <div class="container">
+                        <a href="{% url 'show_falucty' %}" class="btn btn-warning btn-sm">View Faculty</a>
+                    </div>
+                    <div class="container">
+                        <a href="{% url 'add_certificate' %}" class="btn btn-warning btn-sm w-100">Add Certificate</a>
+                    </div>
+                    <div class="container">
+                        <a href="{% url 'view_all_register_student' %}" class="btn btn-warning btn-sm">View Student</a>
+                    </div>
+                    <div class="container">
+                        <a href="{% url 'show_student_detail' %}" class="btn btn-warning btn-sm">View Certificate</a>
+                    </div>
+              
+                </div>
+            </div>
+            <div class="container mt-5">
+                
+            </div>
+            
+        </div>
+        {% comment %} end of 2 colm code {% endcomment %}
+
+
+        {% comment %} Below Code Is For 3rd Coloum {% endcomment %}
+        <div class="col-4 bg-white ">
+            <div class="container pt-2">
+                <h2 class="text-center">Request Board</h2>
+                <hr class="w-70 bg-black align-baseline">
+            </div>
+
+            {% comment %} Request Board  Table Code {% endcomment %}
+            <div class="container-fluid m-0 p-0">
+                {% if form %}
+                    <table class="table table-dark">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Accept</th>
+                                <th>Details</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for fm in form %}
+                                <tr>
+                                    <td>{{fm.name}}</td>
+                                    <td><a class="" href="{% url 'accept' fm.username %}">Accept</a></td>
+                                    <td><a href="{% url 'details' fm.username %}" >Details</a></td>
+                                    <td><a href="{% url 'rejects' fm.username %}">Reject</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <h4 class="text-center bg-info p-3"> No New Request</h4>
+                {% endif %}
+             </div>
+            {% comment %} End Of Request Board Table {% endcomment %}
+
+        </div>
+        {% comment %} ENd Of 3rd Column Code  {% endcomment %}
+        </div>
+
+    </div>
+    {% comment %} end of row {% endcomment %}
+</div>
+{% comment %} end of conatiner  {% endcomment %}
+
+<script>
+    $('.btn').on('click', function() {
+        var $this = $(this);
+      $this.button('loading');
+        setTimeout(function() {
+           $this.button('reset');
+       }, 8000);
+    });
+</script>
+    
+</body>
+</html>
+
+
+

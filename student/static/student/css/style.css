@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital@1&family=Indie+Flower&family=My+Soul&display=swap');
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body{
+
+    background-color: #6C757D;
+}
+
+.bg-min-nav{
+    background-color: #ADB5BD;
+
+}
+
+
+.fornt-sz{
+    font-size: small;
+}
+
+.side-bg{
+    background-color: white;
+}
+
+
+.zoom {
+    transition: transform .2s; /* Animation */
+
+  }
+  
+  .zoom:hover {
+    transform: scale(1.1); 
+  }

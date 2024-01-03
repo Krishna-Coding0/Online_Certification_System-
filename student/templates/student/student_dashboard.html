@@ -1,0 +1,134 @@
+{% include 'student/navbar.html' %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'student/css/style.css' %}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital@1&family=Inconsolata:wght@200&family=Indie+Flower&display=swap');
+        </style> 
+
+</head>
+<body>
+
+
+<div class="container">
+
+    {% comment %} start of 1st row {% endcomment %}
+    <div class="row d-flex flex-nowrap ">
+
+        {% comment %} 1st Colum Code start {% endcomment %}
+        <div class="col-3 bg-white me-1 pt-2">
+            <h2 class="text-center">Profile</h2>
+            <hr class="w-70 bg-black align-baseline">
+            <div class="container text-center pb-4">
+                <img src="{{profile.profile_photo.url}}" alt="" height=200px class="rounded-circle" >
+            </div>
+            <div class="container-fluid text-capitalize p-2" style="font-family: 'Inconsolata', monospace;">
+                <label for="" class="me-2">Name:</label>
+                <b class="">{{profile.name}} {{profile.lname}}</b>
+                <br>
+                <label for="" class="me-2">Department:</label>
+                <b>{{profile.std_department}}</b>
+                <br>
+                <label for="" class="me-2">Branch of:</label>
+                <b>{{profile.branch_of}}</b>
+                <br>
+                <label for="" class="me-2">Phone No:</label>
+                <b>{{profile.phone_no}}</b>
+                <br>
+                <label for="" class="me-2">Address:</label>
+                <b>{{profile.Address}}</b>
+                <br>
+                <label for="" class="me-2">Roll No::</label>
+                <b>{{profile.roll}}</b>
+                <br>
+                <label for="" class="me-2">Email Id::</label>
+                <b>{{profile.email}}</b>
+                <br>
+
+                {{groups}}
+
+            </div>
+        </div>
+        {% comment %} End of 1st Column Code {% endcomment %}
+
+        {% comment %} 2nd column Code Start {% endcomment %}
+        <div class="col-6 bg-white me-1 pt-2">
+            <h2 class="text-center">
+            <div class="container">
+                <h2 class="text-center m-b1">Dashboard</h2>
+                <hr class="w-70 bg-black align-baseline">
+
+                <div class="container border border-dark">
+                    <form action="{% url 'searchcertificate' %}" method="post">
+                        {% csrf_token %}
+                        <h6>Search Certificate</h6>
+                        
+                        <input type="search" name="gsearch" class="mt-2 small" placeholder="Enter Roll No. e.g: 19BCA039">
+                        <input type="submit" value="Search" class="mt-2 mb-3 w-50 btn btn-secondary btn-sm">
+                    </form>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+        {% comment %} end of 2 colm code {% endcomment %}
+
+
+        {% comment %} Below Code Is For 3rd Coloum {% endcomment %}
+        <div class="col-3 bg-white ">
+            <div class="container pt-2 w-75">
+                <h2 class="text-center">Notification</h2>
+                <hr class="w-70 bg-black align-baseline">
+            </div>
+
+
+    </div>
+    {% comment %} end of row {% endcomment %}
+</div>
+{% comment %} end of conatiner  {% endcomment %}
+
+
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block content %}
+
+
+{% endblock content %}
+
+
+

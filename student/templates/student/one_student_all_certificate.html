@@ -1,0 +1,40 @@
+{% include 'student/navbar.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      {% block mycss %}
+    <link rel="stylesheet" href="{% static 'student/css/style.css' %}">
+    {% endblock mycss %}
+</head>
+<body>
+    <div class="container bg-light">
+        <div class="container text-center text-capitalize">
+           
+            <div class="container">
+                <h5 class="text-black text-center display-6 ">All {{name}} Certificates</h5>
+                <hr class="w-25 m-auto bg-danger mb-2">
+            </div>
+        </div>
+        <div class="container d-flex flex-wrap btn btn-light justify-content-evenly mb-5">
+            {% if form %}
+            {% for f in form %}
+            
+                    <a href="{{f.adminupload.url}}" class="" ><b class="position-absolute my-1 btn btn-secondary bottom-10 ">{{f.certificate_name}}</b><img src="{{f.adminupload.url}}" alt="" height=200px class="mx-2 my-3 zoom"></a>
+                {% endfor %}
+            {% else %}
+            <div class="container">
+                <h4 class="text-center alert alert-warning text-capitalize">{{name}} Have Not Got Any Certificates </h4>
+                
+            </div>
+            {% endif %}
+        </div>
+</div>
+    
+</body>
+</html>

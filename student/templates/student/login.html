@@ -1,0 +1,95 @@
+{% include 'student/navbar.html' %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container bg-white">
+        <div class="container">
+            <div class="container">
+                <h5 class="text-black text-center display-6 ">Sign In</h5>
+                <hr class="w-25 m-auto bg-danger mb-2">
+            </div>
+
+            <div class="container text-center">
+                {% if messages %}
+                    {% for message in messages %}
+                        <p {% if message.tags %} class="alert alert-{{message.tags}} mb-5 {% endif %}"> {{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="container text-center">
+                        <img src="{% static 'student/img/singin.jpg' %}" class="ms-5 mt-1 text-center" alt="" width="500px" height="300px"></a>
+                    </div>
+                </div>
+                <div class="col-4 border border-secondary my-auto mx-auto">
+                    <div class="container">
+                        {% if vl is None %}
+                            <div class="container">
+                                <div class="container ">
+                                    <a class="ms-auto float-end mt-1 btn btn-outline-secondary" href="/signup/">Sign Up</a>
+                                </div>
+                                <div class="clearfix"></div>
+                                <form action="" method="post">
+                                    {% csrf_token %}
+                                    {{fm.as_p}}
+                                    <input type="submit" class="my-2 d-flex text-center btn btn-outline-dark" value="Validate">
+
+                                </form>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="container">
+                        
+                        {% if form %}
+                        <div class="container ">
+                            <a class="ms-auto float-end mt-1 btn btn-outline-secondary" href="/signup/">Sign Up</a>
+                        </div>
+                        <div class="clearfix"></div>
+                            <form action="" method="post" novalidate>
+                                {% csrf_token %}
+                                {% for fm in form %}
+                                    <div class="form-group">
+                                        {{fm.label_tag}} {{fm}} 
+                                        <small class="text-warning"> {{fm.errors|striptags}} </small>
+                                    </div>
+                                {% endfor %}
+                                <input type="submit" class="my-2 d-flex text-center btn btn-outline-dark" value="Login">
+
+                                {% if form.non_field_errors %}   
+                                {% for error in form.non_field_errors %}
+                                <p class="alert alert-danger my-3">{{error}}</p>
+                                {% endfor %}
+                                {% endif %}
+                                
+                                
+                            </form>
+
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+</body>
+</html>

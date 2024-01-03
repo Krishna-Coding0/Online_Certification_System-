@@ -1,0 +1,157 @@
+{% include 'student/navbar.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'student/css/signup2.css' %}">
+
+</head>
+<body>
+
+    <div class="container bg-white">
+        <div class="container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-2">
+                        
+                <a class="nav-link btn btn-outline-secondary btn-sm me-1 mt-2 p-2" href="{% url 'user_profile_update' %}">Profile Update</a>
+                        
+                    </div>
+                    <div class="col-8">
+                        <h5 class="text-black text-center display-6 ">Update Academic Details</h5>
+                            <hr class="w-75 m-auto bg-danger mb-2">
+                    </div>
+                    <div class="col-2">
+                <a class="nav-link btn btn-outline-secondary btn-sm me-1 mt-2 p-2" href="{% url 'user_change_pass' %}">Password Update</a>
+                        
+                    </div>
+                </div>
+              
+            </div>
+
+            <div class="container">
+                {% if messages %}
+                    {% for message in messages %}
+                        <p {% if message.tags %} class="alert alert-{{message.tags}} mb-5 {% endif %}"> {{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+
+            <div class="row mt-0">
+                <div class="col-4 text-center">
+
+                    <div class="container my-4">
+                        <img src="{{image.profile_photo.url}}" alt="" height=300px class="rounded-circle" >
+
+                    </div>
+                </div>
+                <div class="col-8">
+
+                    <div class="container d-grid">
+                   
+
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                
+                                <div class="form-row d-flex flex-nowrap">
+                                    <div class="form-group col-6 me-1 mb-2">
+                                        <label class="ps-1">Username:</label>{{form.username}}
+                                        <small class="text-warning"> {{form.errors|striptags}} </small>
+                                    </div>
+                                
+                                    <div class="form-group col-6">
+                                        <label class="ps-1">Name:</label>{{form.name}}
+                                        <small class="text-warning"> {{form.errors|striptags}} </small>
+                                    </div>
+                                </div>
+
+                                <div class="form-row d-flex flex-nowrap">
+                                    <div class="form-group col-6 me-1 mb-2">
+                                        <label class="ps-1">Email:</label>{{form.email}}
+                                        <small class="text-warning"> {{form.errors|striptags}} </small>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label class="ps-1">Department:</label>{{form.std_department}}
+                                        <small class="text-warning"> {{form.errors|striptags}} </small>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="form-row d-flex flex-nowrap">
+                                    <div class="form-group col-6 me-1 mb-2">
+                                        <label class="ps-1">Branch of:</label>{{form.branch_of}}
+                                        <small class="text-warning"> {{form.errors|striptags}} </small>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label class="ps-1">Contact:</label>{{form.phone_no}}
+                                        <small class="text-warning"> {{form.errors|striptags}} </small>
+                                    </div>
+                                </div>
+                                <div class="form-row d-flex flex-nowrap">
+                                    <div class="form-group col-6 me-1 mb-2">
+                                        <label class="ps-1">Branch of:</label>{{form.Address}}
+                                        <small class="text-warning"> {{form.errors|striptags}} </small>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label class="ps-1">Contact:</label>{{form.roll}}
+                                        <small class="text-warning"> {{form.errors|striptags}} </small>
+                                    </div>
+                                </div>
+                                <div class="form-row d-flex flex-nowrap">
+                                    <div class="form-group col-6 me-1 mb-2">
+                                        <label for="id_profile_photo">Profile photo:</label><input type="file" name="profile_photo" class="form-control" id="id_profile_photo"> 
+                                    </div>
+                                    <div class="form-group col-6 d-grid mt-3">
+                                    <input type="submit" value="Update Academy Details" class="my-2 d-flex text-center btn btn-outline-dark ">
+                                        
+                                    </div>
+                                </div>
+                                
+                            
+                            </div>
+
+
+
+                           
+                                
+                        
+                                    
+                                    
+                                   
+                                
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                {% if form.non_field_errors %}
+                                    {% for error in form.non_field_errors %}
+                                        <p class="alert alert-danger my-3">{{error}}</p>
+                                     {% endfor %}
+                                {% endif %} 
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+
+</body>
+</html>
+
+
+
+
+

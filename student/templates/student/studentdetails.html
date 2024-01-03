@@ -1,0 +1,56 @@
+{% include 'student/navbar.html' %}
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container   bg-white">
+   
+
+      <div class="container">
+        <h5 class="text-black text-center display-6 ">Request For Joining This Portal</h5>
+        <hr class="w-75 m-auto bg-danger mb-2">
+    </div>
+
+    <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Branch of</th>
+            <th>Phone No</th>
+            <th>Address</th>
+            <th>Roll No</th>
+            <th>Email</th>
+            <th>Responce</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{details.name}}</td>
+            <td>{{details.std_department}}</td>
+            <td>{{details.branch_of}}</td>
+            <td>{{details.phone_no}}</td>
+            <td>{{details.Address}}</td>
+            <td>{{details.roll}}</td>
+            <td>{{details.email}}</td>
+            <td><a href="{% url 'accept' details.username %}" class="btn btn-outline-secondary">Accept</a>
+            <a href="{% url 'rejects' details.username %}" class="btn btn-outline-secondary">Reject</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+
+
+</body>
+</html>

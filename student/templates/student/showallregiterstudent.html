@@ -1,0 +1,64 @@
+{% include 'student/navbar.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<div class="container bg-light">
+    
+    <div class="container">
+        <h5 class="text-black text-center display-6">All Students Details</h5>
+        <hr class="w-50 m-auto bg-danger mb-5">
+    </div>
+
+    <div class="container">
+        {% if form %}
+            <table class="table table-hover bg-white m-0">
+                <thread>
+                    <tr>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Branch(Year)</th>
+                        <th>Phone No</th>
+                        <th>Address</th>
+                        <th>Roll</th>
+                        <th>Picture</th>
+                        <th>
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <input type="search" id="gsearch" name="gsearch" placeholder="Search" aria-label="Search" class="w-80">
+                                <button type="submit" class="btn btn-outline-secondary btn-sm w-25 mb-1 py-1 ms-3">Search</button>
+                            </form>
+                        </th>
+                    </tr>
+                </thread>
+                <tbody>
+                    {% for sh in form%}
+                        {% if sh.is_auth %}
+                            <tr>
+                                <td>{{sh.name}}</td>
+                                <td>{{sh.std_department}}</td>
+                                <td>{{sh.branch_of}}</td>
+                                <td>{{sh.phone_no}}</td>
+                                <td>{{sh.Address}}</td>
+                                <td>{{sh.roll}}</td>
+                                <td><img src="{{sh.profile_photo.url}}" class="img-fluid rounded" width="50px" alt="" ></td>
+                                <td class="text-center mt-2 d-grid">
+                                    <a href="{% url 'check_one_student_all_certificate' sh.roll sh.name %}" class="btn btn-warning btn-sm mb-1">All Certificate</a>
+                                    <a href="{% url 'single_std_delete' sh.username %}" class="btn btn-warning btn-sm">Delete</a>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <h4 class="text-center alert alert-warning">No record </h4>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}
+
+
+

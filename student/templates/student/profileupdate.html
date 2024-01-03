@@ -1,0 +1,61 @@
+{% include 'student/navbar.html' %}
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+
+    
+    <div class="container bg-white border border-dark">
+        <div class="row">
+    
+            <div class="col-4 text-center border-end border-primary">
+                <div class="container">
+                    <img src="{{image.admin_profile.url}}" alt="" height=250px class=" my-3 rounded-circle">
+                </div>
+                <div class="container mb-3 ms-5 ">
+                    
+                    <form action="" method="post"  enctype="multipart/form-data">
+                        {% csrf_token %}  
+                        <div class="container text-start mb-2">
+                            <label for="id_username">Username:</label><input type="text" name="username" value={{user}} maxlength="100" required id="id_username" class="w-75">
+                            <small class="text-warning"> {{fm.errors|striptags}}</small>
+                            
+                        </div>                  
+                        <div class="container d-grid">
+                            <input type="file" name="admin_profile" id="id_admin_profile">
+                            <input type="submit" value="Upload" class="w-75 mt-2">
+
+                        </div>                  
+                        
+                    </form>
+                    
+                </div>
+    
+            </div>
+            <div class="col-3 m-auto p-auto text-center text-black">
+                <a class="nav-link btn btn-outline-secondary me-1 p-2" href="{% url 'user_profile_update' %}">Profile Update</a>
+                
+            </div>
+            <div class="col-3 m-auto p-auto text-center text-black">
+                <a class="nav-link btn btn-outline-secondary me-1 p-2" href="{% url 'user_change_pass' %}">Password Update</a>
+                
+            </div>
+            
+    <div>
+
+
+
+
+    
+</body>
+</html>
